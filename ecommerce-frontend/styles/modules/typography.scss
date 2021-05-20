@@ -1,0 +1,36 @@
+@import './variables.scss';
+
+$light: 300;
+$normal: 400;
+$semibold: 500;
+$bold: 700;
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $primary-font;
+}
+
+p {
+    padding-bottom: to-rem(14px)
+}
+
+p, input, span {
+    font-family: $secondary-font;
+    line-height: 1.4;
+}
+
+.heading-01 { 
+    font-size: to-rem(32px);
+    font-weight: 400;
+
+    color: $primary-color;
+
+    @include media('>desktop') { 
+        font-size: to-rem(24px);
+        text-align: left;
+    }
+}
+
+.heading-02 {
+    font-size: to-rem(24px);
+    padding: to-rem(10px) 0;
+}

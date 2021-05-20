@@ -1,0 +1,8 @@
+.header {
+    text-align: center;
+    padding: to-rem(20px);
+
+    @include media('>tablet') { 
+        text-align: left;
+    }
+}
