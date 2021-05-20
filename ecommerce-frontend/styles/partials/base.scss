@@ -29,3 +29,10 @@ body {
 .word-break {
   display: block;
 }
+
+a {
+  &:any-link {
+    color: #000000;
+
+  }
+}

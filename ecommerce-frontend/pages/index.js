@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <Layout>
       <main className='main'>
-        <p>hi</p>
+        <p>Home</p>
       </main>
     </Layout>
   )

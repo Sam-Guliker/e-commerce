@@ -1,0 +1,20 @@
+.navigation {
+    font-family: $primary-font;
+    font-weight: 400;
+    color: #000000;
+    
+
+
+    @include media('>phone') {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__item {
+        text-decoration: none;
+
+        @include media('>phone') {
+            padding-left: to-rem(10px);
+        }
+    }
+}
