@@ -1,5 +1,14 @@
 @import '../modules/variables.scss';
 
+* {
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
 html {
   font-size: 16px;
 
@@ -17,22 +26,27 @@ svg {
 
 body {
   font-size: 1rem;
+  line-height: 1.2;
   background-color: $background-color;
 
   margin: auto;
 
-  @include media('>tablet') {
-    height: 100vh;
+  @include media('>phone') {
+    min-height: 100vh;
   }
 }
 
+img {
+  max-width: 100%;
+  padding-bottom: to-rem(20px);
+}
 .word-break {
   display: block;
 }
 
 a {
+  text-decoration: none; 
   &:any-link {
     color: #000000;
-
   }
 }

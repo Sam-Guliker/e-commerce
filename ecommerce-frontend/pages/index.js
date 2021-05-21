@@ -1,24 +1,21 @@
 import Layout from "../components/layout";
-import products from "../products.json"
-
-import { getImage } from '../utils/urls'
+import ProductList from "../components/ProductList";
+import Meta from "../components/Meta";
 
 export default function Home() {
   return (
     <Layout>
+      <Meta />
       <main className='main'>
-        <ul>
-          {products.map((item, key) => {
-            return (
-              <li key={key}>
-                <img src={getImage(item.image)} />
-                <h2>{item.name}</h2>
-                <p>{item.meta_description}</p>
-              </li>
-            )
-          })}
-        </ul>
+        <ProductList />
       </main>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  //fetch products
+  
+
+  //return products as props
 }
