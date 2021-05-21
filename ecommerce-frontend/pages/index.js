@@ -2,12 +2,14 @@ import Layout from "../components/layout";
 import ProductList from "../components/ProductList";
 import Meta from "../components/Meta";
 
-export default function Home() {
+import {API_URL} from '../utils/urls'
+
+export default function Home({ products }) {
   return (
     <Layout>
       <Meta />
       <main className='main'>
-        <ProductList />
+        <ProductList products={products}/>
       </main>
     </Layout>
   )
@@ -15,7 +17,14 @@ export default function Home() {
 
 export async function getStaticProps() {
   //fetch products
-  
+  const products_res = await fetch(`${API_URL}/products/`)
+  const products = await products_res.json()
 
   //return products as props
+
+  return {
+    props: {
+      products
+    }
+  }
 }
