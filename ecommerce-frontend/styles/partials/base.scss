@@ -53,7 +53,13 @@ a {
 
 .container {
     @include media('>phone'){
-      display: flex;
       padding: 0 to-rem(70px);
+  }
+}
+
+.container--header {
+    @include media('>phone'){
+      display: flex;
+      justify-content: space-between;
   }
 }

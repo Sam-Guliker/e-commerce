@@ -1,6 +1,7 @@
-.navigation {
+.navigation,
+.navigation_two {
     font-family: $secondary-font;
-    font-weight: $bold;
+    align-self: flex-end;
 
     @include media('>phone') {
         display: flex;
@@ -8,10 +9,19 @@
     }
 
     &__item {
+        font-size: to-rem(20px);
         text-decoration: none;
 
         @include media('>phone') {
-            padding-left: to-rem(10px);
+            padding-left: to-rem(40px);
         }
     }
+}
+
+.navigation_two {
+    padding-right: to-rem(50px);
+}
+
+.navigation_two__item {
+    font-size: to-rem(16px);
 }

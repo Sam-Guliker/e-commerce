@@ -5,7 +5,10 @@ import Link from 'next/link'
 
 import Icon from "./Icon";
 import Nav from "./Nav";
-// import UserActions from "./UserActions";
+import NavSectionTwo from "./NavSectionTwo";
+import NavSectionThree from "./NavSectionThree";
+
+import LogoIcon from "./LogoIcon";
 
 import AuthContext from '../context/AuthContext'
 
@@ -23,11 +26,13 @@ export default function Header() {
 
     return (
         <header className="header">
-            <div className="container">
-                {!isHome && <a href="#" onClick={goBack}>{"<"} Back</a>}
-                <Icon />
-                <Nav />
-                {/* <UserActions /> */}
+            <div className="container container--header">
+                <LogoIcon />
+                <div className="navigation-group">
+                    <Nav />
+                    <NavSectionTwo />
+                </div>
+                <NavSectionThree />
 
                 <div className="auth">
                     { user ? (
@@ -43,6 +48,8 @@ export default function Header() {
                     )}
                 </div>
             </div>
+            {!isHome && <a href="#" onClick={goBack}>{"<"} Back</a>}
+
         </header>
     )
 }
