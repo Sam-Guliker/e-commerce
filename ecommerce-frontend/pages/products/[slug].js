@@ -1,13 +1,11 @@
 import Head from 'next/head';
 
-import Layout from '../../components/layout'
-
 import { twoDecimals } from '../../utils/format'
 import { getImage, API_URL } from '../../utils/urls'
 
 const Product = ({ product }) => {
     return (
-        <Layout>
+        <main className="container">
             <Head>
                 {product.meta_title &&
                     <title>{product.meta_title}</title>
@@ -18,14 +16,23 @@ const Product = ({ product }) => {
                 }
             </Head>
             <div className="detail-container">
-                <h2 className="heading-02">{product.name}</h2>
-                <img src={getImage(product.image)} />
-                <h3 className="heading-02">{product.name}</h3>
-                <p>{product.content}</p>
-                <p>{twoDecimals(product.price)}</p>
+                <div className="image-displayer">
+                    <img src={getImage(product.image)} />
+                    <div className="product-info">
+                        <h3 className="heading-03">Description</h3>
+                        <p>{product.style}</p>
+                        <p> { product.content } </p>
+                    </div>
+                </div>
+                <div className="order-product">
+                    <h2 className="heading-02 product-title">{product.name}</h2>
+                    <p>€{twoDecimals(product.price)}</p>
+                    <button className="btn call-to-action">In the cart</button>
+                    <button className="btn" >Save to the collection</button>
+                </div>
             </div>
-        </Layout>
-    )
+        </main>
+    ) 
 }
 
 export async function getStaticProps({params: { slug }}) {

@@ -6,12 +6,12 @@ import {API_URL} from '../utils/urls'
 
 export default function Home({ products }) {
   return (
-    <Layout>
-      <Meta />
-      <main className='main'>
-        <ProductList products={products}/>
-      </main>
-    </Layout>
+      <section>
+        <Meta />
+        <main className='main'>
+          <ProductList products={products}/>
+        </main>
+      </section>
   )
 }
 

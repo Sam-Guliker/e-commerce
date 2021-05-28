@@ -1,9 +1,6 @@
 .navigation {
-    font-family: $primary-font;
-    font-weight: 400;
-    color: #000000;
-    
-
+    font-family: $secondary-font;
+    font-weight: $bold;
 
     @include media('>phone') {
         display: flex;

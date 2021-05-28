@@ -50,3 +50,10 @@ a {
     color: #000000;
   }
 }
+
+.container {
+    @include media('>phone'){
+      display: flex;
+      padding: 0 to-rem(70px);
+  }
+}
