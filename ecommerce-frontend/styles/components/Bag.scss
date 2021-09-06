@@ -1,0 +1,22 @@
+.bag-container {
+    padding: to-rem(20) to-rem(40);
+    background-color: black;
+    display: flex;
+    
+    span {
+        color: coral;
+        padding-right: to-rem(6);
+        padding-bottom: 0;
+        align-self: center;
+        font-size: to-rem(12);
+        font-weight: bold;
+    }
+
+    .bag-text {
+        color: white;
+        padding: 0;
+        text-transform: uppercase;
+        font-size: to-rem(9);
+        align-self: center;
+    }
+}

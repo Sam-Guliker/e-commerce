@@ -1,19 +1,16 @@
 import { useContext } from 'react'
 import {useRouter} from 'next/router'
 
-import Link from 'next/link'
-
 import Icon from "./Icon";
 import Nav from "./Nav";
-import NavSectionTwo from "./NavSectionTwo";
-import NavSectionThree from "./NavSectionThree";
+import HMenu from "./HMenu";
+import Bag from "./Bag";
 
 import LogoIcon from "./LogoIcon";
 
 import AuthContext from '../context/AuthContext'
 
 export default function Header() {
-
     const router = useRouter()
     const isHome = router.pathname === '/'
 
@@ -27,26 +24,11 @@ export default function Header() {
     return (
         <header className="header">
             <div className="container container--header">
-                <LogoIcon />
                 <div className="navigation-group">
-                    <Nav />
-                    <NavSectionTwo />
+                    <HMenu />
+                    <LogoIcon />
                 </div>
-                <NavSectionThree />
-
-                <div className="auth">
-                    { user ? (
-                        <Link href="/account">
-                            <a>
-                                {user.email}
-                            </a>
-                        </Link>
-                    ):(
-                        <Link href="/login">
-                            <a>Log in</a>
-                        </Link>
-                    )}
-                </div>
+                <Bag />
             </div>
             {!isHome && <a href="#" onClick={goBack}>{"<"} Back</a>}
 

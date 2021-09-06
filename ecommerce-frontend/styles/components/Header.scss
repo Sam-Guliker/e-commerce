@@ -1,9 +1,5 @@
 .header {
 
-    @include media('>phone') {
-        padding: to-rem(20px) 0;
-    }
-
     .auth {
         position: absolute;
         top: 0;

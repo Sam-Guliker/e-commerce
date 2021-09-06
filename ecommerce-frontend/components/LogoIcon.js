@@ -5,7 +5,7 @@ export default function LogoIcon() {
         <div className="logo">
             <a>
                 <Image 
-                    src='/icons/Logo.svg' 
+                    src='/icons/logo_transparent-black.png' 
                     alt="Picture of the author"
                     width={100}
                     height={50}
