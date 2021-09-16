@@ -1,14 +1,18 @@
 import Layout from "../components/layout";
-import ProductList from "../components/ProductList";
 import Meta from "../components/Meta";
-
 import {API_URL} from '../utils/urls'
+
+import HighlightSection from "../components/HighlightSection";
+import ProductList from "../components/ProductList";
+import Aside from "../components/Aside";
 
 export default function Home({ products }) {
   return (
       <section>
         <Meta />
+        <HighlightSection />
         <main className='main'>
+          <Aside />
           <ProductList products={products}/>
         </main>
       </section>

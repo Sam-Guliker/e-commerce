@@ -1,0 +1,14 @@
+.search-input {
+    border: none;
+    background-color: transparent;
+    
+    font-size: 4rem;
+    font-weight: bold;
+
+    margin-left: 16rem;
+    padding-bottom: to-rem(30px);
+
+    &:focus-visible {
+        outline: 0;
+    }
+}

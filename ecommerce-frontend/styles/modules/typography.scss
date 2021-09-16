@@ -29,9 +29,11 @@ p, input, span {
 }
 
 .heading-02 {
-    font-size: to-rem(24px);
+    font-size: to-rem(16px);
+    font-weight: 700;
+    text-transform: uppercase;
+
     padding-bottom: to-rem(12px);
-    font-weight: 400;
 }
 
 .heading-03 {

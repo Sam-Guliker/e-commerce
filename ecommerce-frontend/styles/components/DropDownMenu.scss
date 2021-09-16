@@ -1,0 +1,33 @@
+.dropdown-container { 
+    width: 100%;
+    color: $sort-color;
+
+    .dropdown-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        padding: to-rem(10px);
+        padding-top: 0;
+        padding-left:0;
+
+        img {
+            align-self: center;
+            transform: rotate(-90deg);
+        }
+    }
+
+.dropdown-content {
+        top:110%;
+        width: 100%;
+
+        .dropdown-item {
+            padding: to-rem(15px);
+            padding-left: 0;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+}

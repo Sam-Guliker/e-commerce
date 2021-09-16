@@ -8,7 +8,7 @@ export const AuthProvider = (props) => {
 
     const [user, setUser] = useState(null)
     const router = useRouter()
-
+    
     /**
      * 
      * @param { string } email 
