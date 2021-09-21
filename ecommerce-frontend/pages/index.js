@@ -13,6 +13,7 @@ export default function Home({ products }) {
   let introAnimation = useRef(null);
   const [search, setSearch] = useState('')
   const [count, setCount] = useState(0);
+  const [bag, setBag] = useState([])
 
   const filteredProducts = products.filter((product) => {
     if(
@@ -31,10 +32,16 @@ export default function Home({ products }) {
       <section>
         <div ref={node => (introAnimation = node)} className="introduction-animation"></div>
         <Meta />
+        {bag}
         <SearchInput search={search} setSearch={setSearch}/>
         <main className='main'>
           <Aside />
-          <ProductList products={products} filteredProducts={filteredProducts} />
+          <ProductList 
+            products={products} 
+            filteredProducts={filteredProducts} 
+            bag={bag} 
+            setBag={setBag}
+          />
         </main>
       </section>
   )
