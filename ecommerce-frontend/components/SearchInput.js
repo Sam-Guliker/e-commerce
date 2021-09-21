@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 
-export default function SearchInput() {
-    const [value, setValue] = useState('')
-    const searchInput = (e) => {
-        setValue(e.currentTarget.value)
-    }
+export default function SearchInput({search, setSearch}) {
     
     return (
         <input 
-            onChange={searchInput} 
+            onChange={(e) => setSearch(e.target.value.toLowerCase())} 
             id="Search" 
             type="text" 
             placeholder="Search.."
