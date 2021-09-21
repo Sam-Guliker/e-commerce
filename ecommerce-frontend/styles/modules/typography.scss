@@ -29,16 +29,16 @@ p, input, span {
 }
 
 .heading-02 {
+    font-size: to-rem(32px);
+    font-weight: 700;
+}
+
+.heading-03 {
     font-size: to-rem(16px);
     font-weight: 700;
     text-transform: uppercase;
 
     padding-bottom: to-rem(12px);
-}
-
-.heading-03 {
-    font-size: to-rem(18px);
-    font-weight: 500;
 }
 
 .product-title {

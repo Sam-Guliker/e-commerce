@@ -4,6 +4,10 @@
     width: to-rem(20);
     padding: 2rem;
 
+    &:hover {
+        cursor: pointer;
+    }
+
     .stripes {
         width: 16px;
         height: 2px;
@@ -12,6 +16,10 @@
         position: absolute;
         top: 50%;
         transform: translateX(-50%);
+
+        &:hover {
+            color: coral;
+        }
 
         &::before,
         &::after {

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image'
 
-export default function DropDownMenu({selected, setSelected}) {
+export default function DropDownMenu({selected, setSelected,options}) {
     const [isActive,setIsActive] = useState(false)
-    const options = ['Populair', 'Start from lowest price', 'Start from highest price']
-
     return (
         <div className="dropdown-container">
             <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>{selected} <Image src="/icons/chevron.png" width="15" height="15"/></div>

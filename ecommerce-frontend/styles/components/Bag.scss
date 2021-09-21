@@ -2,6 +2,10 @@
     padding: to-rem(20) to-rem(40);
     background-color: black;
     display: flex;
+
+    &:hover {
+        cursor: pointer;
+    }
     
     span {
         color: coral;

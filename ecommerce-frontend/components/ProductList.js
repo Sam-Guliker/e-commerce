@@ -6,16 +6,25 @@ import { twoDecimals } from '../utils/format'
 export default function ProductList({products}) {
     return (
         <ul className="product-list">
-
             {products.map((product, key) => {
             return (
                 <Link product={product} key={key} href={`/products/${product.slug}`}>
                     <a>
                         <li key={key} className="product-container">
+                            <h2 className="heading-02">{product.brand}</h2>
+                            <p>{product.name}</p>
                             <img src={getImage(product.image)} />
-                            <h2 className="heading-02">{product.name}</h2>
-                            <p>€{twoDecimals(product.price)}</p>
-                            <p>{product.meta_description}</p>
+                            {console.log(product.new)}
+                            {product.new && (<span>{product.new}</span>) }
+                            <div className="bottom-info">
+                                <div className="meta-info">
+                                    <p className="designer-label">Designer</p>
+                                    <p className="designer-name">{product.designer}</p>
+                                </div>
+                                <div className="price-info">
+                                    <p className="price">€{twoDecimals(product.price)}</p>
+                                </div>
+                            </div>
                         </li>
                     </a>
                 </Link>

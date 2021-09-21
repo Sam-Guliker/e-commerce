@@ -1,22 +1,52 @@
 .product-list {
-    padding: 0 to-rem(20px);
-
     @include media('>phone') {
-        display: flex;
-
-        padding: 0 to-rem(40px);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .product-container {
-        padding-left: to-rem(20px);
+        padding: to-rem(30px);
+        border-right: 1px solid lightgrey;
+        border-bottom: 1px solid lightgrey;
 
-        @include media('>phone') {
-            max-width: to-rem(200px);
+        transition: 0.2s all ease-in-out;
 
+        &:hover {
+            background-color: lightgrey;
+            img {
+                transition: 0.2s all ease-in-out;
+
+                transform: rotate(12deg) scale(1.2);
+            }
         }
     }
 
-    a:first-of-type .product-container {
-        padding-left: 0;
+    .bottom-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .price-info {
+        display: flex;
+    }
+
+    .price {
+        font-size: to-rem(20px);
+        font-weight: 700;
+        align-self: flex-end;
+        padding: 0;
+    }
+
+    .designer-label {
+        font-size: to-rem(14);
+        color: lightgrey;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding-bottom: to-rem(6px);
+    }
+
+    .designer-name {
+        padding: 0;
     }
 }

@@ -14,7 +14,7 @@ html {
 
   background-color: black;
 
-  @include media(">desktop") {
+  @include media(">phone") {
     // everything calculated will scale fluidly after medium breakpoint
     font-size: calc(12px + 0.4vw);
   }
@@ -25,7 +25,6 @@ svg {
 }
 
 body {
-  font-size: 1rem;
   line-height: 1.2;
   background-color: $background-color;
 
