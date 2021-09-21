@@ -1,4 +1,7 @@
 .sort-container {
-    width: to-rem(300px);
-    padding: to-rem(50px);
+    padding: to-rem(30px);
+
+    @include media('>tablet') {
+        padding: to-rem(50px);
+    }
 }

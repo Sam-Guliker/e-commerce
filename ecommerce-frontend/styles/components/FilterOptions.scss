@@ -1,4 +1,8 @@
 .filter-container {
-    padding: to-rem(50px);
     background: lightgrey;
+    padding: to-rem(30px);
+    
+    @include media('>tablet') {
+        padding: to-rem(50px);
+    }
 }

@@ -1,11 +1,11 @@
 .product-list {
-    @include media('>phone') {
+    @include media('>tablet') {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
 
     .product-container {
-        padding: to-rem(30px);
+        padding: to-rem(90px) to-rem(60px);
         border-right: 1px solid lightgrey;
         border-bottom: 1px solid lightgrey;
 

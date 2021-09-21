@@ -58,6 +58,8 @@ a {
 }
 
 .main {
-  display: flex;
-  flex-direction: flow;
+  @include media('>tablet'){
+    display: flex;
+    flex-direction: row;
+  }
 }

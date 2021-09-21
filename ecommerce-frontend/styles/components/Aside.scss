@@ -1,3 +1,11 @@
 .aside-container {
     border-right: 1px solid lightGrey;
+
+    @include media('>tablet'){ 
+        width: to-rem(600px);
+    }
+
+    @include media('>desktop') {
+        width: 33%;
+    }
 }

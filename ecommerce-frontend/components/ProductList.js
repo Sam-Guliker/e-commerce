@@ -14,7 +14,6 @@ export default function ProductList({products}) {
                             <h2 className="heading-02">{product.brand}</h2>
                             <p>{product.name}</p>
                             <img src={getImage(product.image)} />
-                            {console.log(product.new)}
                             {product.new && (<span>{product.new}</span>) }
                             <div className="bottom-info">
                                 <div className="meta-info">

@@ -1,6 +1,8 @@
 .header {
 
-    margin-bottom: to-rem(60px);
+    @include media('>tablet') {
+        margin-bottom: to-rem(60px);
+    }
 
     .auth {
         position: absolute;
