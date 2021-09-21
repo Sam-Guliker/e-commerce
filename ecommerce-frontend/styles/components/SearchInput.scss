@@ -6,10 +6,12 @@
 
     width: 100%;
     padding: to-rem(30px);
+
+    border-bottom: 1px solid lightgrey;
     
     @include media('>tablet') {
         font-size: 4rem;
-        margin-left: 16rem;
+        padding-left: 16rem;
         padding-bottom: to-rem(30px);
     }
     

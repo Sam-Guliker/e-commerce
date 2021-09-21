@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef  } from 'react';
+import {gsap, Power2 } from "gsap";
 
 import Layout from "../components/layout";
 import Meta from "../components/Meta";
@@ -9,7 +10,9 @@ import ProductList from "../components/ProductList";
 import Aside from "../components/Aside";
 
 export default function Home({ products }) {
+  let introAnimation = useRef(null);
   const [search, setSearch] = useState('')
+  const [count, setCount] = useState(0);
 
   const filteredProducts = products.filter((product) => {
     if(
@@ -19,8 +22,14 @@ export default function Home({ products }) {
     ) { return product }
   })
 
+  useEffect(() => {
+    // Update the document title using the browser API
+    gsap.to(introAnimation, {opacity: 0, duration: 0.6, autoAlpha: 0, ease: Power2})
+  });
+
   return (
       <section>
+        <div ref={node => (introAnimation = node)} className="introduction-animation"></div>
         <Meta />
         <SearchInput search={search} setSearch={setSearch}/>
         <main className='main'>
