@@ -1,7 +1,15 @@
-export default function HMenu() {
+
+export default function HMenu({isActiveNavigation, setIsActiveNavigation}) {
+    const menuContainer = isActiveNavigation ? `menu-container active-menu`:` menu-container`;
+
     return (
-        <div className="menu-container">
-            <div className="stripes"></div>
+        <div 
+            onClick={() => setIsActiveNavigation(!isActiveNavigation)}
+            className={menuContainer}
+        >
+            <div className="stripe stripe-1"></div>
+            <div className="stripe stripe-2"></div>
+            <div className="stripe stripe-3"></div>
         </div>
     )
 }

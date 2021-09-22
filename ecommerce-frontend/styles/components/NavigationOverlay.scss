@@ -1,0 +1,33 @@
+.navigation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: $black;
+
+    z-index: 3;
+
+    display: none;
+
+    .nav-container {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        margin-left: to-rem(200); 
+
+        a {
+            font-family: $primary-font;
+            color: $white;
+            translate: 1s color ease-in-out;
+            font-size: to-rem(70px);
+            padding-bottom: to-rem(20px);
+
+            &:hover {
+                color: lightcoral;
+            }
+        }
+    }
+}

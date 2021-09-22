@@ -1,43 +1,54 @@
 .menu-container {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     background-color: black;
     width: to-rem(20);
     padding: 2rem;
+
+    z-index: 6;
 
     &:hover {
         cursor: pointer;
     }
 
-    .stripes {
-        width: 16px;
+    .stripe {
+        transition: 0.2s transform ease-in-out;
+        transform-origin: center;
+        width: to-rem(16px);
         height: 2px;
         background-color: white;
-        
         position: absolute;
-        top: 50%;
-        transform: translateX(-50%);
+
+        left: to-rem(23px);
 
         &:hover {
             color: coral;
         }
 
-        &::before,
-        &::after {
-            content: '';
-            position: absolute;
-            background-color: white;
-            width: 16px;
-            height: 2px;
-        }
-
-        &::before {
-            top: 6px;
-            width: 9px;
-
-        }
-
-        &::after {
-            bottom: 6px;
-        }
     }
+    .stripe-1 {
+        top: to-rem(28px);
+    }
+
+    .stripe-2{
+        top: to-rem(33px);
+    }
+
+    .stripe-3{
+        top: to-rem(38px);
+        width: to-rem(12px);
+    }
+}
+
+.menu-container.active-menu .stripe.stripe-1 {
+    transform: rotate(41deg) translateY(0.4rem);
+}
+.menu-container.active-menu .stripe.stripe-2 {
+    transform: translateX(-20);
+    opacity: 0;
+}
+.menu-container.active-menu .stripe.stripe-3 {
+    transform: rotate(-41deg) translateY(-0.4rem);
+    width: to-rem(16px);
 }

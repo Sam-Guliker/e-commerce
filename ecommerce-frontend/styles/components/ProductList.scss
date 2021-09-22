@@ -5,6 +5,8 @@
     }
 
     .product-container {
+        position: relative;
+
         padding: to-rem(90px) to-rem(60px);
         border-right: 1px solid lightgrey;
         border-bottom: 1px solid lightgrey;
@@ -17,6 +19,11 @@
                 transition: 0.2s all ease-in-out;
 
                 transform: rotate(12deg) scale(1.2);
+            }
+            @include media('>tablet') {
+                .add {
+                    opacity: 1;
+                }
             }
         }
     }
@@ -48,5 +55,20 @@
 
     .designer-name {
         padding: 0;
+    }
+
+    .add {
+        @include media('>tablet') {
+            position: absolute;
+            top: to-rem(50px);
+            right: to-rem(50px);
+            opacity: 0;
+
+            background-color: coral;
+            border-radius: to-rem(20px) to-rem(20px);
+            width: to-rem(20px);
+            height: to-rem(20px);
+            margin: auto;
+        }
     }
 }

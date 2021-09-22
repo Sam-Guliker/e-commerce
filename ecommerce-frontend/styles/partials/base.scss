@@ -44,9 +44,15 @@ img {
 }
 
 a {
-  text-decoration: none; 
-  &:any-link {
-    color: #000000;
+  text-decoration: none;
+  color: black; 
+  outline: 0;
+  
+  &:focus-within{
+    img {
+        transition: 0.2s all ease-in-out;
+        transform: rotate(12deg) scale(1.2);
+    }
   }
 }
 

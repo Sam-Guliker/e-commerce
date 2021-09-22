@@ -10,52 +10,63 @@ import { twoDecimals } from '../utils/format'
     3. ??
 
 */
-export default function ProductList({products, filteredProducts, bag, setBag}) {
+export default function ProductList({products, search, setSearch, bag, setBag}) {
+    
+    const filteredProducts = products.filter((product) => {
+        if(
+            product.brand.toLowerCase().includes(search) || 
+            product.name.toLowerCase().includes(search) ||
+            product.designer.toLowerCase().includes(search)
+        ) { return product }
+      })
+
+    const onClickDetailView = (e) => {
+        e.preventDefault()
+    }
+
     return (
         <ul className="product-list">
             { filteredProducts.length > 0 ? filteredProducts.map((product, key) => {
                 return (
-                    <Link product={product} key={key} href={`/products/${product.slug}`}>
-                        <a>
-                            <li key={key} className="product-container" onClick={(e => setBag(product))}>
-                                <h2 className="heading-02">{product.brand}</h2>
-                                <p>{product.name}</p>
-                                <img src={getImage(product.image)} />
-                                {product.new && (<span>{product.new}</span>) }
-                                <div className="bottom-info">
-                                    <div className="meta-info">
-                                        <p className="designer-label">Designer</p>
-                                        <p className="designer-name">{product.designer}</p>
-                                    </div>
-                                    <div className="price-info">
-                                        <p className="price">€{twoDecimals(product.price)}</p>
-                                    </div>
+                    <li key={key} className="product-container">
+                        <a href="#" onClick={onClickDetailView}>
+                            <span className="add">&#43;</span>
+                            <h2 className="heading-02">{product.brand}</h2>
+                            <p>{product.name}</p>
+                            <img src={getImage(product.image)} />
+                            {product.new && (<span>{product.new}</span>) }
+                            <div className="bottom-info">
+                                <div className="meta-info">
+                                    <p className="designer-label">Designer</p>
+                                    <p className="designer-name">{product.designer}</p>
                                 </div>
-                            </li>
+                                <div className="price-info">
+                                    <p className="price">€{twoDecimals(product.price)}</p>
+                                </div>
+                            </div>
                         </a>
-                    </Link> )
-                    }
+                    </li>
+                    )
+                }
                 ) : products.map((product, key) => {
                 return (
-                    <Link product={product} key={key} href={`/products/${product.slug}`}>
-                        <a>
-                            <li key={key} className="product-container" onClick={(e => setBag(product))}>
-                                <h2 className="heading-02">{product.brand}</h2>
-                                <p>{product.name}</p>
-                                <img src={getImage(product.image)} />
-                                {product.new && (<span>{product.new}</span>) }
-                                <div className="bottom-info">
-                                    <div className="meta-info">
-                                        <p className="designer-label">Designer</p>
-                                        <p className="designer-name">{product.designer}</p>
-                                    </div>
-                                    <div className="price-info">
-                                        <p className="price">€{twoDecimals(product.price)}</p>
-                                    </div>
+                    <li key={key} className="product-container">
+                        <a href="#" onClick={onClickDetailView}>
+                            <h2 className="heading-02">{product.brand}</h2>
+                            <p>{product.name}</p>
+                            <img src={getImage(product.image)} />
+                            {product.new && (<span>{product.new}</span>) }
+                            <div className="bottom-info">
+                                <div className="meta-info">
+                                    <p className="designer-label">Designer</p>
+                                    <p className="designer-name">{product.designer}</p>
                                 </div>
-                            </li>
+                                <div className="price-info">
+                                    <p className="price">€{twoDecimals(product.price)}</p>
+                                </div>
+                            </div>
                         </a>
-                    </Link>
+                    </li>
                 )
               })}
         </ul>
