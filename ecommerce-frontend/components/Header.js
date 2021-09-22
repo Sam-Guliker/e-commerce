@@ -8,15 +8,7 @@ import LogoIcon from "./LogoIcon";
 
 import AuthContext from '../context/AuthContext'
 
-export default function Header({isActiveNavigation, setIsActiveNavigation}) {
-    const router = useRouter()
-    const isHome = router.pathname === '/'
-
-    const goBack = (event) => {
-        event.preventDefault()
-        router.back()
-    }
-
+export default function Header({isActiveNavigation, setIsActiveNavigation, bag, setBag}) {
     const { user } = useContext(AuthContext)
 
     return (
@@ -26,10 +18,8 @@ export default function Header({isActiveNavigation, setIsActiveNavigation}) {
                     <HMenu isActiveNavigation={isActiveNavigation} setIsActiveNavigation={setIsActiveNavigation}/>
                     <LogoIcon />
                 </div>
-                <Bag />
+                <Bag bag={bag} setBag={setBag} />
             </div>
-            {!isHome && <a href="#" onClick={goBack}>{"<"} Back</a>}
-
         </header>
     )
 }

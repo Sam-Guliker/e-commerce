@@ -23,11 +23,8 @@
             color: $white;
             translate: 1s color ease-in-out;
             font-size: to-rem(70px);
-            padding-bottom: to-rem(20px);
-
-            &:hover {
-                color: lightcoral;
-            }
+            padding-bottom: to-rem(20px);   
+            cursor: pointer;
         }
     }
 }

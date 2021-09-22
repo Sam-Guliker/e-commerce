@@ -1,7 +1,9 @@
-export default function Bag() {
+export default function Bag({bag, setBag}) {
+    let amountInBag = bag.length
+    
     return (
         <div className="bag-container">
-            <span>2</span><p className="bag-text">In bag</p>
+            <span>{amountInBag}</span><p className="bag-text">In bag</p>
         </div>
     )
 }

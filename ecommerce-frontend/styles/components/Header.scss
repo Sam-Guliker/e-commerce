@@ -2,6 +2,7 @@
 
     @include media('>tablet') {
         margin-bottom: to-rem(60px);
+        padding-left: to-rem(70px)
     }
 
     .auth {

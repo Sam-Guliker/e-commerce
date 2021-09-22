@@ -17,11 +17,10 @@
             background-color: lightgrey;
             img {
                 transition: 0.2s all ease-in-out;
-
                 transform: rotate(12deg) scale(1.2);
             }
             @include media('>tablet') {
-                .add {
+                .btn-round {
                     opacity: 1;
                 }
             }
@@ -57,18 +56,30 @@
         padding: 0;
     }
 
-    .add {
+    .btn-round {
+        @include media('>tablet') {
+            transition: 0.2s all ease-in-out;
+            position: absolute;
+
+            background-color: $white;
+            color: coral;
+            border-radius: to-rem(20px) to-rem(20px);
+            width: to-rem(40px);
+            height: to-rem(40px);
+            right: to-rem(40px);
+            top: to-rem(40px);
+
+            opacity: 0;
+        }
+    }
+
+    .btn-round-inside {
         @include media('>tablet') {
             position: absolute;
-            top: to-rem(50px);
-            right: to-rem(50px);
-            opacity: 0;
-
-            background-color: coral;
-            border-radius: to-rem(20px) to-rem(20px);
-            width: to-rem(20px);
-            height: to-rem(20px);
-            margin: auto;
+            top: 50%;
+            left: 50%;
+            transform:translateY(-50%) translateX(-50%) scale(2);
+            padding-bottom: 0;
         }
     }
 }

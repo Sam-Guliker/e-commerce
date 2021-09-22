@@ -1,4 +1,4 @@
-import {gsap, Power2 } from "gsap";
+import {gsap} from "gsap";
 import { useRef, useEffect } from 'react';
 
 export default function NavigationOverlay({isActiveNavigation,setIsActiveNavigation}) {

@@ -20,6 +20,11 @@ export default function ProductList({products, search, setSearch, bag, setBag}) 
         ) { return product }
       })
 
+    const handleCartItems = (product) => {
+        console.log(product)
+        console.log(bag.length)
+    } 
+
     const onClickDetailView = (e) => {
         e.preventDefault()
     }
@@ -30,7 +35,9 @@ export default function ProductList({products, search, setSearch, bag, setBag}) 
                 return (
                     <li key={key} className="product-container">
                         <a href="#" onClick={onClickDetailView}>
-                            <span className="add">&#43;</span>
+                            <div className="btn-round" onClick={(e, product) => {setBag(product)}}>
+                                <span className="btn-round-inside">&#43;</span>
+                            </div>
                             <h2 className="heading-02">{product.brand}</h2>
                             <p>{product.name}</p>
                             <img src={getImage(product.image)} />
@@ -52,6 +59,9 @@ export default function ProductList({products, search, setSearch, bag, setBag}) 
                 return (
                     <li key={key} className="product-container">
                         <a href="#" onClick={onClickDetailView}>
+                        <div className="btn-round" onClick={(e) => {setBag(product)}}>
+                                <span className="btn-round-inside">&#43;</span>
+                            </div>
                             <h2 className="heading-02">{product.brand}</h2>
                             <p>{product.name}</p>
                             <img src={getImage(product.image)} />

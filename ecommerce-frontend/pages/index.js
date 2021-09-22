@@ -10,6 +10,13 @@ import Aside from "../components/Aside";
 import Header from "../components/Header";
 import NavigationOverlay from "../components/NavigationOverlay";
 
+
+/*
+
+  Add cart
+https://dev.to/papasanto/build-a-react-hooks-shopping-cart-with-usestate-and-useeffect-39hk
+  */
+
 export default function Home({ products }) {
   let introAnimation = useRef(null);
   const [search, setSearch] = useState('')
@@ -24,7 +31,12 @@ export default function Home({ products }) {
   return (
       <section>        
         <Meta />
-        <Header isActiveNavigation={isActiveNavigation} setIsActiveNavigation={setIsActiveNavigation}/>
+        <Header
+          isActiveNavigation={isActiveNavigation} 
+          setIsActiveNavigation={setIsActiveNavigation}
+          bag={bag}
+          setBag={setBag}
+        />
         <div ref={node => (introAnimation = node)} className="introduction-animation"></div>
         <NavigationOverlay isActiveNavigation={isActiveNavigation} setIsActiveNavigation={setIsActiveNavigation}/>
         <SearchInput search={search} setSearch={setSearch}/>
