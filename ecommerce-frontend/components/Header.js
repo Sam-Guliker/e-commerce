@@ -8,7 +8,7 @@ import LogoIcon from "./LogoIcon";
 
 import AuthContext from '../context/AuthContext'
 
-export default function Header({isActiveNavigation, setIsActiveNavigation, bag, setBag}) {
+export default function Header({isActiveNavigation, setIsActiveNavigation, cart}) {
     const { user } = useContext(AuthContext)
 
     return (
@@ -18,7 +18,7 @@ export default function Header({isActiveNavigation, setIsActiveNavigation, bag, 
                     <HMenu isActiveNavigation={isActiveNavigation} setIsActiveNavigation={setIsActiveNavigation}/>
                     <LogoIcon />
                 </div>
-                <Bag bag={bag} setBag={setBag} />
+                <Bag cart={cart} />
             </div>
         </header>
     )

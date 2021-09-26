@@ -10,7 +10,6 @@ import Aside from "../components/Aside";
 import Header from "../components/Header";
 import NavigationOverlay from "../components/NavigationOverlay";
 
-
 /*
 
   Add cart
@@ -20,13 +19,30 @@ https://dev.to/papasanto/build-a-react-hooks-shopping-cart-with-usestate-and-use
 export default function Home({ products }) {
   let introAnimation = useRef(null);
   const [search, setSearch] = useState('')
-  const [bag, setBag] = useState([])
   const [isActiveNavigation ,setIsActiveNavigation] = useState(false);
+  const [cart, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState(0);
+
+  const totalPrice = () => {
+    let totalVal = 0;
+
+    for (let i = 0; i< cart.length; i++) {
+      totalVal += cart[i].price
+    }
+    setCartTotal(totalVal)
+  }
+
+  const addToCart = (product) => {
+    if(!cart.includes(product)) {
+      setCart([...cart, product])
+    }
+  }
 
   useEffect(() => {
     // Update the document title using the browser API
     gsap.to(introAnimation, {opacity: 0, duration: 0.6, autoAlpha: 0, ease: Power2})
-  });
+    totalPrice()
+  }, [cart]);
 
   return (
       <section>        
@@ -34,8 +50,7 @@ export default function Home({ products }) {
         <Header
           isActiveNavigation={isActiveNavigation} 
           setIsActiveNavigation={setIsActiveNavigation}
-          bag={bag}
-          setBag={setBag}
+          cart={cart}
         />
         <div ref={node => (introAnimation = node)} className="introduction-animation"></div>
         <NavigationOverlay isActiveNavigation={isActiveNavigation} setIsActiveNavigation={setIsActiveNavigation}/>
@@ -46,8 +61,11 @@ export default function Home({ products }) {
             search={search}
             setSearch={setSearch}
             products={products} 
-            bag={bag} 
-            setBag={setBag}
+            cart={cart} 
+            setCart={setCart}
+            cartTotal={cartTotal}
+            setCartTotal={setCartTotal}
+            addToCart={addToCart}
           />
         </main>
       </section>
