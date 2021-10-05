@@ -45,19 +45,3 @@ p, input, span {
     font-size: to-rem(36px);
     font-weight: bold;
 }
-
-.btn {
-    width: 100%;
-    padding: 1rem;
-    background: none;
-    outline: none;
-    border: 2px solid black;
-    font-family: $secondary-font;
-    margin-bottom: to-rem(20px);
-    font-size: to-rem(28px);
-}
-
-.call-to-action {
-    background-color: #000;
-    color: white;
-}

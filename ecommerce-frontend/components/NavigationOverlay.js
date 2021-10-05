@@ -1,7 +1,7 @@
 import {gsap} from "gsap";
 import { useRef, useEffect } from 'react';
 
-export default function NavigationOverlay({isActiveNavigation,setIsActiveNavigation}) {
+export default function NavigationOverlay({isActiveNavigation}) {
     let navRef = useRef(null)
     const tl = gsap.timeline({defaults: {autoAlpha: 0}})    
     const overlayContainer = isActiveNavigation ? `navigation-overlay js-open-overlay` : `navigation-overlay`;
@@ -10,7 +10,15 @@ export default function NavigationOverlay({isActiveNavigation,setIsActiveNavigat
         tl.set(navRef.current, { display: 'flex', duration:0, autoAlpha: 0})
     }, [])
 
-    isActiveNavigation ? tl.to(navRef.current, {autoAlpha: 1}): tl.to(navRef.current, {autoAlpha: 0})
+    const animateNavigation = () => {
+        tl.to(navRef.current, {autoAlpha: 1})
+    }
+
+    const resetAnimation = () => {
+        tl.to(navRef.current, {autoAlpha: 0})
+    }
+
+    isActiveNavigation ? animateNavigation() : resetAnimation()
 
     return (
         <nav ref={navRef} className={overlayContainer}>

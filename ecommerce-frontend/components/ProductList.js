@@ -1,77 +1,80 @@
-import Link from 'next/link'
+import {gsap, Power2 } from "gsap";
+import { useRef   } from 'react';
 
 import { getImage } from '../utils/urls'
 import { twoDecimals } from '../utils/format'
 
-/* 
-    
-    1. Remove next page,
-    2. Check the onclick function and make sure it adds the item to the bag.
-    3. ??
+import {motion} from 'framer-motion'
 
-*/
-export default function ProductList({products, search, setSearch, cart, setCart, addToCart}) {
-    
-    const filteredProducts = products.filter((product) => {
-        if(
-            product.brand.toLowerCase().includes(search) || 
-            product.name.toLowerCase().includes(search) ||
-            product.designer.toLowerCase().includes(search)
-        ) { return product }
-      })
+import Link from 'next/link'
 
-    const onClickDetailView = (e) => {
-        e.preventDefault()
+export default function ProductList({filteredProducts, product, addToCart}) {
+    let viewFrame = useRef(new Array())
+
+    const onClickDetailView = (key) => {
+        // gsap.to(viewFrame.current[key], {display: 'none'})
+        console.log('hi')
     }
+
+    /* 
+        If search input is used, render the searched items.
+        Else render the normal list.
+    */
 
     return (
         <ul className="product-list">
             { filteredProducts.length > 0 ? filteredProducts.map((product, key) => {
                 return (
-                    <li key={key} className="product-container">
-                        <a href="#" onClick={onClickDetailView}>
-                            <div className="btn-round" onClick={() => addToCart(product)}>
-                                <span className="btn-round-inside">&#43;</span>
-                            </div>
-                            <h2 className="heading-02">{product.brand}</h2>
-                            <p>{product.name}</p>
-                            <img src={getImage(product.image)} />
-                            {product.new && (<span>{product.new}</span>) }
-                            <div className="bottom-info">
-                                <div className="meta-info">
-                                    <p className="designer-label">Designer</p>
-                                    <p className="designer-name">{product.designer}</p>
+                    <motion.li 
+                        whileHover={{scale: 1.1}}
+                        ref={(element) => viewFrame.current.push(element)} key={key} className="product-container">
+                        <Link product={product} key={key} href={`/products/${product.slug}`}>
+                            <a href="#" onClick={ () => onClickDetailView(key)}>
+                                <div className="btn-round" onClick={() => addToCart(product)}>
+                                    <span className="btn-round-inside">&#43;</span>
                                 </div>
-                                <div className="price-info">
-                                    <p className="price">€{twoDecimals(product.price)}</p>
+                                <h2 className="heading-02">{product.brand}</h2>
+                                <p>{product.name}</p>
+                                <img src={getImage(product.image)} />
+                                {product.new && (<span>{product.new}</span>) }
+                                <div className="bottom-info">
+                                    <div className="meta-info">
+                                        <p className="designer-label">Designer</p>
+                                        <p className="designer-name">{product.designer}</p>
+                                    </div>
+                                    <div className="price-info">
+                                        <p className="price">€{twoDecimals(product.price)}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </li>
+                            </a>
+                        </Link>
+                    </motion.li>
                     )
                 }
                 ) : products.map((product, key) => {
                 return (
-                    <li key={key} className="product-container">
-                        <a href="#" onClick={onClickDetailView}>
-                        <div className="btn-round" onClick={() => addToCart(product)}>
-                                <span className="btn-round-inside">&#43;</span>
-                            </div>
-                            <h2 className="heading-02">{product.brand}</h2>
-                            <p>{product.name}</p>
-                            <img src={getImage(product.image)} />
-                            {product.new && (<span>{product.new}</span>) }
-                            <div className="bottom-info">
-                                <div className="meta-info">
-                                    <p className="designer-label">Designer</p>
-                                    <p className="designer-name">{product.designer}</p>
+                    <motion.li ref={(element) => viewFrame.current.push(element)} key={key}  className="product-container">
+                        <Link product={product} key={key} href={`/products/${product.slug}`}>
+                            <a href="#" onClick={onClickDetailView}>
+                            <div className="btn-round" onClick={() => addToCart(product)}>
+                                    <span className="btn-round-inside">&#43;</span>
                                 </div>
-                                <div className="price-info">
-                                    <p className="price">€{twoDecimals(product.price)}</p>
+                                <h2 className="heading-02">{product.brand}</h2>
+                                <p>{product.name}</p>
+                                <img src={getImage(product.image)} />
+                                {product.new && (<span>{product.new}</span>) }
+                                <div className="bottom-info">
+                                    <div className="meta-info">
+                                        <p className="designer-label">Designer</p>
+                                        <p className="designer-name">{product.designer}</p>
+                                    </div>
+                                    <div className="price-info">
+                                        <p className="price">€{twoDecimals(product.price)}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </li>
+                            </a>
+                        </Link>
+                    </motion.li>
                 )
               })}
         </ul>

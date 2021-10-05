@@ -1,0 +1,53 @@
+.slug-container {
+    @include media('>phone'){
+        display: flex;
+    }
+
+    .slider-container {
+        @include media('>phone'){
+            width: 50%;
+        }
+    }
+
+    .image-displayer {
+        @include media('>phone'){
+            width: calc( 50% - 70px);
+        }
+    }
+
+    .info-container {
+        @include media('>phone'){
+            width: 50%;
+            padding: to-rem(70px);
+            padding-top: 0;
+        }
+    }
+
+    .brand-container {
+        @include media('>phone'){
+            padding-right: to-rem(20px);
+        } 
+    }
+
+    .designer-container {
+        @include media('>phone'){
+            padding-right: to-rem(20px);
+        } 
+    }
+
+    .order-product {
+        @include media('>phone'){
+            padding-right: to-rem(20px);
+            display: flex;
+            flex-flow: nowrap row;
+            justify-content: space-between;
+        }
+    }
+
+    .price {
+        @include media('>phone'){
+            font-size: to-rem(30px);
+            font-weight: bold;
+        }
+    }
+}

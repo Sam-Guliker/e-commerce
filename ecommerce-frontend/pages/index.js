@@ -7,21 +7,23 @@ import {API_URL} from '../utils/urls'
 import SearchInput from "../components/SearchInput";
 import ProductList from "../components/ProductList";
 import Aside from "../components/Aside";
-import Header from "../components/Header";
 import NavigationOverlay from "../components/NavigationOverlay";
-
-/*
-
-  Add cart
-https://dev.to/papasanto/build-a-react-hooks-shopping-cart-with-usestate-and-useeffect-39hk
-  */
-
-export default function Home({ products }) {
+ 
+export default function Home({ products, cart, setCart, isActiveNavigation, setIsActiveNavigation }) {
   let introAnimation = useRef(null);
   const [search, setSearch] = useState('')
-  const [isActiveNavigation ,setIsActiveNavigation] = useState(false);
-  const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
+
+      // Filtering the list with the search option.
+
+  const filteredProducts = products.filter((product) => {
+    if(
+        product.brand.toLowerCase().includes(search) || 
+        product.name.toLowerCase().includes(search) ||
+        product.designer.toLowerCase().includes(search)
+    ) { return product }
+  })
+      
 
   const totalPrice = () => {
     let totalVal = 0;
@@ -47,16 +49,12 @@ export default function Home({ products }) {
   return (
       <section>        
         <Meta />
-        <Header
-          isActiveNavigation={isActiveNavigation} 
-          setIsActiveNavigation={setIsActiveNavigation}
-          cart={cart}
-        />
         <div ref={node => (introAnimation = node)} className="introduction-animation"></div>
+        
         <NavigationOverlay isActiveNavigation={isActiveNavigation} setIsActiveNavigation={setIsActiveNavigation}/>
         <SearchInput search={search} setSearch={setSearch}/>
         <main className='main'>
-          <Aside />
+          <Aside filteredProducts={filteredProducts} />
           <ProductList 
             search={search}
             setSearch={setSearch}
@@ -66,6 +64,7 @@ export default function Home({ products }) {
             cartTotal={cartTotal}
             setCartTotal={setCartTotal}
             addToCart={addToCart}
+            filteredProducts={filteredProducts}
           />
         </main>
       </section>

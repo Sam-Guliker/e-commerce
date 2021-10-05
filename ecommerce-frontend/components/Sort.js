@@ -12,4 +12,3 @@ export default function Sort() {
         </div>
     )
 }
-// https://codepen.io/foxdonut/pen/GpwRJB?editors=001

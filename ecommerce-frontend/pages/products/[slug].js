@@ -3,9 +3,12 @@ import Head from 'next/head';
 import { twoDecimals } from '../../utils/format'
 import { getImage, API_URL } from '../../utils/urls'
 
-const Product = ({ product }) => {
+import Carousel, { CarouselItem } from "../../components/Carousel";
+
+
+const Product = ({ product, cart }) => {
     return (
-        <main className="container">
+        <main className="slug-container">
             <Head>
                 {product.meta_title &&
                     <title>{product.meta_title}</title>
@@ -15,29 +18,48 @@ const Product = ({ product }) => {
                     <meta name="description" content={product.meta_description} />
                 }
             </Head>
-            <div className="detail-container">
-                <div className="image-displayer">
+
+            <div className="slider-container">
+                <Carousel>
+                    <CarouselItem>Item1</CarouselItem>
+                    <CarouselItem>Item2</CarouselItem>
+                    <CarouselItem>Item3</CarouselItem>
+                </Carousel>
+            </div>
+
+            <div className="info-container">
+                <h2 className="heading-02 product-title">{product.brand}</h2>
+                <p>{product.name}</p>
                     <img src={getImage(product.image)} />
                     <div className="product-info">
                         <h3 className="heading-03">Description</h3>
                         <p>{product.style}</p>
-                        <p> { product.content } </p>
+                        <p>{product.content}</p>
                     </div>
-                </div>
                 <div className="order-product">
-                    <h2 className="heading-02 product-title">{product.name}</h2>
-                    <p>€{twoDecimals(product.price)}</p>
-                    <button className="btn call-to-action">In the cart</button>
-                    <button className="btn" >Save to the collection</button>
+                    <div className="brand-container">
+                        <p>Brand:</p>
+                        <p>{product.brand}</p>
+                    </div>
+                    <div className="designer-container">
+                        <p>Designer</p>
+                        <p>{product.designer}</p>
+                    </div>
+                    
+                    <p className="price">€{twoDecimals(product.price)}</p>
                 </div>
+                <button className="btn cart-button"><span>+</span>add to shopping bag</button>
             </div>
+              
         </main>
     ) 
 }
 
 export async function getStaticProps({params: { slug }}) {
     const product_res = await fetch(`${API_URL}/products/?slug=${slug}`)
+
     const found = await product_res.json()
+    // const dataFound = await data.json()
 
     return {
         props: {
